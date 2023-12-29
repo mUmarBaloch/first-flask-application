@@ -7,15 +7,14 @@ todos = ['default']
 def hello_world():
     return render_template('index.html')
 
-@app.route("/addTodo",methods=["GET"])
+@app.route("/todos",methods=["GET"])
 def addTodo():
     todos.append(2)
     print(todos)
     return "nothing"
 
-
 @app.route("/deleteTodo",methods=["DELETE"])
 def deleteTodo():
     return "deleted"
 
-app.run()
+app.run(debug=True)
