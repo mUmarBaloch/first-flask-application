@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
-</head>
-<body>
-    <h1> Hello world </h1>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block head %} 
+<title> First Flask Application </title>
+{% endblock %}
+
+
+
+{% block body %}
+
+
+<div style="align-content: center;">
+    <h3>Add Values here</h3>
+    <br><br>
+    <a href="/addTodo"><button>Get Call</button></a>
+</div>
+
+{% endblock %}

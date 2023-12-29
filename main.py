@@ -10,6 +10,8 @@ def hello_world():
 @app.route("/addTodo",methods=["GET"])
 def addTodo():
     todos.append(2)
+    print(todos)
+    return "nothing"
 
 
 @app.route("/deleteTodo",methods=["DELETE"])
