@@ -1,17 +1,16 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,request, url_for
 app = Flask(__name__)
 
 todos = ['default']
 
 @app.route("/")
 def hello_world():
-    return render_template('index.html')
+    return render_template('index.html',todos=todos)
 
-@app.route("/todos",methods=["GET"])
+@app.route("/addTodo",methods=["POST"])
 def addTodo():
-    todos.append(2)
-    print(todos)
-    return "nothing"
+    todos.append(request.form.get('todo'))
+    return render_template(url_for('index'),todos=todos)
 
 @app.route("/deleteTodo",methods=["DELETE"])
 def deleteTodo():

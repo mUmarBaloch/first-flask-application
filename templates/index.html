@@ -8,12 +8,19 @@
 
 {% block body %}
 
-
-<div style="align-content: center;">
+<h2 style="text-align: center;"> Temp Records </h2>
+<br><br>
+<form action="/addTodo" method="POST" style="display: flex; flex-direction: column; align-items: center; margin-top: 20px;">
+    <div style="display: flex; flex-direction: row;">
+    <input type="text" id="newTodo" name="todo" required style="padding: 5px; margin-bottom: 10px;">
+    <button type="submit" style="background-color: transparent; border: none; font-size: 22;"><h4> Add </h4></button>
+    </div>
+  </form>
+<div style="width: 40%; margin:auto;justify-content: center;height: 300px;border: solid black 2px;text-align: center;">
     <br>
-    <form action="/getTodo" method="GET">
-        <input type="submit" value="Get Data">
-      </form>
+    {% for todo in todos %}
+    <p>{{ todo }}</p>
+  {% endfor %}
     
 </div>
 
