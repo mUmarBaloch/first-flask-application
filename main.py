@@ -10,7 +10,7 @@ def hello_world():
 @app.route("/addTodo",methods=["POST"])
 def addTodo():
     todos.append(request.form.get('todo'))
-    return render_template(url_for('index'),todos=todos)
+    return render_template('index.html',todos=todos)
 
 @app.route("/deleteTodo",methods=["DELETE"])
 def deleteTodo():
