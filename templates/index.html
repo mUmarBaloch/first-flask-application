@@ -1,31 +1,78 @@
 {% extends 'base.html' %}
 
 {% block head %} 
-<title> First Flask Application </title>
+  <title>First Flask Application</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    table {
+      margin-top: 20px;
+      border-collapse: collapse;
+      width: 70%;
+    }
+
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    input[type="text"] {
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: transparent;
+      border: none;
+      font-size: 16px;
+    }
+  </style>
 {% endblock %}
 
-
-
 {% block body %}
-
-<h2 style="text-align: center;"> Temp Records </h2>
-<br><br>
-<form action="/addTodo" method="POST" style="display: flex; flex-direction: column; align-items: center; margin-top: 20px;">
+  <h2 style="text-align: center;">Temp Records</h2>
+  <form action="/addTodo" method="POST">
     <div style="display: flex; flex-direction: row;">
-    <input type="text" id="newTodo" name="todo" required style="padding: 5px; margin-bottom: 10px;">
-    <button type="submit" style="background-color: transparent; border: none; font-size: 22;"><h4> Add </h4></button>
+      <input type="text" id="newTodo" name="todo" required>
+      <button type="submit">Add</button>
     </div>
   </form>
-<div style="width: 40%; margin:auto;justify-content: center;height: 300px;border: solid black 2px;text-align: center;">
-    <br>
-    {% for todo in todos %}
-  
-      <p>{{ todo }}</p> <button  style="background-color: transparent; border: none; font-size: 22;"> delete </button>
-    </div>
-   
 
-  {% endfor %}
-    
-</div>
-
+  <div style="width: 70%; margin-top: 20px; text-align: center;">
+    <table>
+      <thead>
+        <tr>
+          <th>Todo</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for todo in todos %}
+          <tr>
+            <td>{{ todo }}</td>
+            <td>
+              <form action="/deleteTodo" method="POST" style="display: inline;">
+                <input type="hidden" name="todo" value="{{ todo }}">
+                <button type="submit">Delete</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 {% endblock %}

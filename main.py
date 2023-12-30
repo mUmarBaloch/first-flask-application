@@ -12,8 +12,12 @@ def addTodo():
     todos.append(request.form.get('todo'))
     return render_template('index.html',todos=todos)
 
-@app.route("/deleteTodo",methods=["DELETE"])
+@app.route("/deleteTodo", methods=["POST"])
 def deleteTodo():
-    return "deleted"
+    if request.method == "POST":
+        todo = request.form.get("todo")
+        todos.remove(todo)
+        return render_template('index.html',todos=todos)
+
 
 app.run(debug=True)
